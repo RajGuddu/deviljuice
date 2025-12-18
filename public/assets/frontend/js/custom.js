@@ -11,14 +11,14 @@ $(document).ready(function () {
             $('.header').removeClass('fixed-header');
         }
     });
-    // $(window).scroll(function () {
-    //     if ($(window).scrollTop() >= 10) {
-    //         $('.tab-header').addClass('fixed-tab-header');
-    //     } else {
-    //         $('.tab-header').removeClass('fixed-tab-header');
-    //     }
+    $(window).scroll(function () {
+        if ($(window).scrollTop() >= 10) {
+            $('.tab-header').addClass('fixed-tab-header');
+        } else {
+            $('.tab-header').removeClass('fixed-tab-header');
+        }
 
-    // });
+    });
 
 });
 

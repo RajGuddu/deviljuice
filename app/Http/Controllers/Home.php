@@ -37,23 +37,51 @@ class Home extends Controller
         // echo '<pre>'; print_r($data['proCategory']); exit;
         return view('home', $data);
     }
-    public function services(Request $request){
+    public function our_vodka(Request $request){
         $data = [];
         $data['services'] = ServiceModel::where('status', 1)->orderBy('sv_id','asc')->get();
         $data['banner'] = $this->commonmodel->getOneRecord('tbl_banner',['status'=>1,'page'=>5]);
-        return view('services', $data);
+        return view('our-vodka', $data);
     }
-    public function service_list(Request $request, $url){
+    public function story(Request $request){
         $data = [];
-        $service = ServiceModel::where('serv_url', $url)->first();
-        if(!$service){
-            return redirect()->to('404');
-        }
-        $data['service'] = $service;
-        $data['variants'] = ServiceVariantsModel::where([['sv_id','=',$service->sv_id],['status','=',1]])->orderBy('position','asc')->get();
-        $data['countries'] = $this->commonmodel->crudOperation('RA','tbl_countries','',['status'=>1],['countries_iso_code','ASC']);
+        // $service = ServiceModel::where('serv_url', $url)->first();
+        // if(!$service){
+        //     return redirect()->to('404');
+        // }
+        // $data['service'] = $service;
+        // $data['variants'] = ServiceVariantsModel::where([['sv_id','=',$service->sv_id],['status','=',1]])->orderBy('position','asc')->get();
+        // $data['countries'] = $this->commonmodel->crudOperation('RA','tbl_countries','',['status'=>1],['countries_iso_code','ASC']);
         
-        return view('srvices_listing', $data);
+        return view('the-story', $data);
+    }
+    public function cocktails(){
+        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
+        $data['products'] = $this->commonmodel->get_min_value_products();
+        $data['proCategory'] = $this->commonmodel->crudOperation('RA','tbl_product_category','',['status'=>1]);
+        return view('cocktails', $data);
+    }
+    public function cocktails_club(){
+        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
+        $data['products'] = $this->commonmodel->get_min_value_products();
+        $data['proCategory'] = $this->commonmodel->crudOperation('RA','tbl_product_category','',['status'=>1]);
+        return view('cocktails-club', $data);
+    }
+    
+    /************************END OF DEVIL***************** */
+    public function product_details(Request $request){
+        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
+        // $product = $this->commonmodel->get_min_value_products('','',$url);
+        
+        // if(empty($product)){
+        //     return redirect()->to('/404');
+        // }
+        // $data['product'] = $product;
+        // get all attributes excepts current attributes
+        // $data['attributes'] = $this->commonmodel->crudOperation('RA','tbl_product_attributes','',[['attrId','!=',$product->attrId],['pro_id','=',$product->pro_id],['status','=',1]]);
+        // $data['simiProduct'] = $this->commonmodel->get_min_value_similar_products($url,$product->cat_id);
+        // echo '<pre>'; print_r($data['simiProduct']); exit;
+        return view('product_detail', $data);
     }
     public function contact(){
         
@@ -79,26 +107,8 @@ class Home extends Controller
            return redirect()->to('/404');
         }
     }
-    public function products(){
-        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
-        $data['products'] = $this->commonmodel->get_min_value_products();
-        $data['proCategory'] = $this->commonmodel->crudOperation('RA','tbl_product_category','',['status'=>1]);
-        return view('product', $data);
-    }
-    public function product_details(Request $request, $url){
-        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
-        $product = $this->commonmodel->get_min_value_products('','',$url);
-        
-        if(empty($product)){
-            return redirect()->to('/404');
-        }
-        $data['product'] = $product;
-        // get all attributes excepts current attributes
-        $data['attributes'] = $this->commonmodel->crudOperation('RA','tbl_product_attributes','',[['attrId','!=',$product->attrId],['pro_id','=',$product->pro_id],['status','=',1]]);
-        $data['simiProduct'] = $this->commonmodel->get_min_value_similar_products($url,$product->cat_id);
-        // echo '<pre>'; print_r($data['simiProduct']); exit;
-        return view('product_detail', $data);
-    }
+    
+    
     public function book_variant($vid){
         // echo $url; exit;
         if($vid){
