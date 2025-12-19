@@ -38,7 +38,7 @@
 
                 </div>
                 <div class="user-panel">
-                    <a href="#"><img src="{{ asset('assets/frontend/images/user-icon.svg') }}" alt=""></a>
+                    <a href="{{ url('member-login') }}"><img src="{{ asset('assets/frontend/images/user-icon.svg') }}" alt=""></a>
                     <a href="#"><img src="{{ asset('assets/frontend/images/cart-icon.svg') }}" alt=""></a>
                 </div>
             </div>

@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Devil’s | Juice </title>
+    <title> Devil’s | Juice </title>
 
 
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media-query.css">
-
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- Head ke andar ye line add karo -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -25,17 +24,22 @@
 
 <body>
 
-   <div class="header">
+    <div class="header">
         <nav class="navbar navbar-expand-lg" aria-label="Fifth navbar example">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="#">
                     <img src="images/devel-log.png" alt="">
                 </a>
-             
+                <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button> -->
 
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false"
                     aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"> <i class="fa-solid fa-bars text-white"></i> </span> -->
                     <span class="navbar-toggler-bar bar1"></span>
                     <span class="navbar-toggler-bar bar2"></span>
                     <span class="navbar-toggler-bar bar3"></span>
@@ -45,151 +49,118 @@
                 <div class="collapse navbar-collapse" id="navbarsExample05">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-white active" aria-current="page" href="index.html">Home</a>
+                            <a class="nav-link text-white active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" aria-current="page" href="our-vodka.html">Our Vodka</a>
+                            <a class="nav-link text-white" aria-current="page" href="#">Our Vodka</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" aria-current="page" href="the-story.html">The Story</a>
+                            <a class="nav-link text-white" aria-current="page" href="#">The Story</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" aria-current="page" href="coctails.html">Cocktails</a>
+                            <a class="nav-link text-white" aria-current="page" href="#">Cocktails</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" aria-current="page" href="coctails-club.html">Cocktails CLUB</a>
+                            <a class="nav-link text-white" aria-current="page" href="#">Cocktails CLUB</a>
                         </li>
-
                     </ul>
-
                 </div>
+
                 <div class="user-panel">
                     <a href="#"><img src="images/user-icon.svg" alt=""></a>
                     <a href="#"><img src="images/cart-icon.svg" alt=""></a>
                 </div>
             </div>
         </nav>
-    </div> */ ?>
+    </div>*/ ?>
 
-    <div class="vodka-banner panel-space">
-        <div class="container-fluid text-center">
-            <h1 class="banner-title text-center w-100 mt-5">Our Vodka</h1>
-            <p class="text-center">A spirit born from obsession and perfected through precision. Every drop of Devil’s
-                Juice Vodka embodies balance, smooth yet fierce, refined yet raw. This is where craftsmanship meets
-                temptation.</p>
-        </div>
-    </div>
-
-    <div class="bg-black container-fluid ">
-        <div class="devider bg-black mb-md-0 mb-4"></div>
-    </div>
-
-    <section class="creation py-lg-5 py-4 bg-black">
-        <div class="container-fluid">
-            <!-- <h2 class="h2-heading">The Devil’s Finest Creation</h2> -->
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="product-card">
-                        <a href="{{ url('our-vodka/devil-juice') }}">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/creation1.png') }}" alt="Devil's Juice Vodka">
-                        </div>
-                        </a>
-                        <div class="product-details">
-                            <h2 class="product-title">Devil’s Juice Vodka</h2>
-                            <p class="product-desc">Smooth as sin, born of fire, made to tempt.</p>
-                            <div class="product-actions">
-                                <div class="quantity-selector">
-                                    <button class="qty-btn" id="decrement">-</button>
-                                    <span class="qty" id="qty-value">1</span>
-                                    <button class="qty-btn" id="increment">+</button>
-                                </div>
-
-                                <button class="add-cart-btn">Add to cart</button>
+    <div class="cocktail-creation panel-space mt-5">
+        <div class="container">
+            <h2 class="h2-heading mb-4">Speak to the Guardians of the Devil’s Pour</h2>
+            <p class="text-white mb-5 w-75">Got a question, a spark of an idea, or something you want to raise with the
+                Devil’s Juice crew? Send us a message — the fire is always burning, and we’re here to answer.</p>
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="bg-white p-4">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Your Name</label>
+                                <input type="text" class="form-control" placeholder="Tell us who we’re speaking to.">
                             </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">E-mail address </label>
+                                <input type="email" class="form-control"
+                                    placeholder="So we can whisper a reply back to you.">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Subject</label>
+                                <input type="text" class="form-control" placeholder="What’s this conversation about?">
+                            </div>
+
+
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <label class="form-label m-0">Message</label>
+                                    <div class="editor-toolbar">
+                                        <i class="fa-solid fa-bold"></i>
+                                        <i class="fa-solid fa-italic"></i>
+                                        <i class="fa-solid fa-list"></i>
+                                    </div>
+                                </div>
+                                <div class="rich-editor-box">
+                                    <textarea class="editor-textarea"
+                                        placeholder="List everything that went into your mix — from the base to the final flourish."></textarea>
+                                </div>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-submit w-100">Send to the Devil’s Desk</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="fw-bold mb-4 text-28">Prefer a More Direct Summon?</h3>
+
+                    <div class="d-flex flex-column gap-3 mb-5">
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-mobile-screen contact-icon fs-5"></i>
+                            <span class="fs-6">+00 0000 0000</span>
+                        </div>
+                        <div class="m-0">
+                            <a href="mailto:contact@devilsjuice.com" class="text-white">
+                                <div class="d-flex align-items-center">
+                                    <i class="fa-regular fa-envelope contact-icon fs-5"></i>
+                                    <span class="fs-6">contact@devilsjuice.com</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fa-regular fa-clock contact-icon fs-5"></i>
+                            <span class="fs-6">Monday to Friday, 9 AM – 6 PM (GMT)</span>
                         </div>
                     </div>
 
-                </div>
-                <div class="col-md-4">
-                    <div class="product-card">
-                        <a href="{{ url('our-vodka/devil-juice') }}">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/creation2.png') }}" alt="Devil's Juice Vodka">
-                        </div>
-                        </a>
-                        <div class="product-details">
-                            <h2 class="product-title">Devil’s Juice Vodka</h2>
-                            <p class="product-desc">Smooth as sin, born of fire, made to tempt.</p>
-                            <div class="product-actions">
-                                <div class="quantity-selector">
-                                    <button class="qty-btn" id="decrement">-</button>
-                                    <span class="qty" id="qty-value">1</span>
-                                    <button class="qty-btn" id="increment">+</button>
-                                </div>
+                    <div class="map-container">
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop"
+                            alt="Map Location" class="map-image">
 
-                                <button class="add-cart-btn">Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/creation1.png') }}" alt="Devil's Juice Vodka">
-                        </div>
-                        <div class="product-details">
-                            <h2 class="product-title">Devil’s Juice Vodka</h2>
-                            <p class="product-desc">Smooth as sin, born of fire, made to tempt.</p>
-                            <div class="product-actions">
-                                <div class="quantity-selector">
-                                    <button class="qty-btn" id="decrement">-</button>
-                                    <span class="qty" id="qty-value">1</span>
-                                    <button class="qty-btn" id="increment">+</button>
-                                </div>
-
-                                <button class="add-cart-btn">Add to cart</button>
-                            </div>
+                        <div class="office-card">
+                            <h5 class="fw-bold mb-2">Visit our office</h5>
+                            <p class="text-secondary mb-4" style="font-size: 0.9rem; line-height: 1.5;">
+                                123 Inferno Street, Ember District, Nightfall City, 56789
+                            </p>
+                            <a href="#" class="btn btn-directions text-decoration-none">
+                                Get Directions <i class="fa-solid fa-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="panel-space devils-hour bg-black">
-        <h2 class="h2-heading text-center mb-4 weight-600">The Devil’s Hour</h2>
-        <p class="w-50 text-center mx-auto mb-5 pb-lg-5 px-3">Where the night slows, and the fire rises. A moment to unwind,
-            indulge, and taste the luxury of rebellion — one pour at a time.</p>
-
-        <div class="container-fluid">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="devils-hour-profile">
-                        <img src="{{ asset('assets/frontend/images/devil1.jpg') }}" alt="devil1" class="w-100">
-                    </div>
-                    <small>Ammy, @ammy_23 </small>
-                </div>
-                <div class="col-md-4">
-                    <div class="devils-hour-profile">
-                        <img src="{{ asset('assets/frontend/images/devil2.jpg') }}" alt="devil1" class="w-100">
-                    </div>
-                    <small>Ammy, @ammy_23 </small>
-                </div>
-                <div class="col-md-4">
-                    <div class="devils-hour-profile">
-                        <img src="{{ asset('assets/frontend/images/devil3.jpg') }}" alt="devil1" class="w-100">
-                    </div>
-                    <small>Ammy, @ammy_23 </small>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
+    </div>
 
     <?php /* <footer class="footer-panel py-md-5 py-4 text-center position-relative"
         style="background-image: url(images/footer-bg.gif);">
@@ -235,6 +206,9 @@
     <script>
         AOS.init();
     </script>
+
+
+
 
     <script>
         const decrement = document.getElementById('decrement');

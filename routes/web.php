@@ -41,16 +41,18 @@ Route::get('/404', function () {
 });
 Route::get('/', [Home::class,'index']);
 Route::get('our-vodka', [Home::class,'our_vodka']);
+Route::get('our-vodka/{id}', [Home::class,'product_details']);
 Route::get('story', [Home::class,'story']);
 Route::get('cocktails', [Home::class,'cocktails']);
+Route::get('cocktails/{id}', [Home::class,'cocktails_details']);
+Route::get('cocktail-creation', [Home::class,'cocktail_creation']);
 Route::get('cocktails-club', [Home::class,'cocktails_club']);
+Route::get('contact', [Home::class,'contact']);
 /************************END OF DEVIL***************** */
-Route::get('product/{id}', [Home::class,'product_details']);
 Route::match(['get','post'],'save_appointment_service', [Home::class,'save_appointment_service']);
 Route::match(['get','post'],'save_book_appointment_h', [Home::class,'save_book_appointment_h']);
 Route::match(['get','post'],'save_contact_us', [Home::class,'save_contact_us']);
 Route::get('thank-you', [Home::class,'thank_you']);
-Route::get('contact', [Home::class,'contact']);
 Route::get('about-us', [Home::class,'about_us']);
 Route::get('book-variant/{id}', [Home::class,'book_variant']);
 Route::get('book-appointment', [Home::class,'book_an_appointment']);

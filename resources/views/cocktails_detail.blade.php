@@ -69,125 +69,156 @@
                 </div>
             </div>
         </nav>
-    </div> */ ?>
+    </div>*/ ?>
 
-    <div class="vodka-banner panel-space">
+    <div class="vodka-banner panel-space coctail-club-bannr"
+        style="background-image: url({{ asset('assets/frontend/images/coctail-club-banner.jpg') }});">
         <div class="container-fluid text-center">
-            <h1 class="banner-title text-center w-100 mt-5">Our Vodka</h1>
-            <p class="text-center">A spirit born from obsession and perfected through precision. Every drop of Devil’s
-                Juice Vodka embodies balance, smooth yet fierce, refined yet raw. This is where craftsmanship meets
-                temptation.</p>
+            <h1 class="banner-title text-center w-100 mt-lg-5">Cocktails Club</h1>
+            <p class="text-center">Step inside the Cocktails Club — a place built for the daring, the creative, and the
+                ones who pour with passion.</p>
         </div>
     </div>
 
-    <div class="bg-black container-fluid ">
-        <div class="devider bg-black mb-md-0 mb-4"></div>
-    </div>
 
-    <section class="creation py-lg-5 py-4 bg-black">
+
+
+    <section class="panel-space devil-Mule-panel">
         <div class="container-fluid">
-            <!-- <h2 class="h2-heading">The Devil’s Finest Creation</h2> -->
+            <h2 class="text-36 weight-600 mb-lg-5 mb-4">Essentials for Summoning the Perfect Pour</h2>
 
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="product-card">
-                        <a href="{{ url('our-vodka/devil-juice') }}">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/creation1.png') }}" alt="Devil's Juice Vodka">
+            <div class="row">
+
+                <div class="col-md-12 col-lg-3 mb-4 ">
+                    <h4 class="section-title mb-4 weight-600">Devil’s Mule by</h4>
+
+                    <div class="devil-Mule-box d-flex align-items-center justify-content-between  mb-4">
+
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-user fs-5"></i>
+
+                            <span class="fs-5 fw-bold fst-italic">Eleanor Vance</span>
                         </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fa-brands fa-instagram fs-5 insta-gradient"></i>
+
+                            <span class="fs-5 fw-light">@mixwithmaya</span>
+                        </div>
+
+                    </div>
+
+                    <p>A bold, fiery twist on a classic — smooth, spicy, and dangerously easy to drink. </p>
+                </div>
+
+                <div class="col-md-12 col-lg-6 mb-4 d-flex justify-content-lg-center">
+                    <div class="m-0 w-75 mx-auto">
+                        <div class="mb-md-5 mb-4">
+                            <h5 class="sub-title mb-3">Ingredients</h5>
+                            <ul class="ingredient-list">
+                                <li><strong>60ml</strong> Devil’s Juice Vodka</li>
+                                <li><strong>120ml</strong> Ginger Beer (strong + spicy works best)</li>
+                                <li><strong>15ml</strong> Fresh Lime Juice</li>
+                                <li><strong>5ml</strong> Smoked Brown Sugar Syrup (optional but wicked)</li>
+                                <li>Crushed ice</li>
+                                <li>Fresh mint sprig</li>
+                                <li>Lime wheel</li>
+                                <li>A small slice of fresh ginger (for garnish)</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h5 class="sub-title mb-3">Instructions</h5>
+                            <ol class="instruction-list">
+                                <li>Fill a copper mug (or chilled glass) with crushed ice.</li>
+                                <li>Pour in Devil’s Juice Vodka for that deep, fiery base.</li>
+                                <li>Add lime juice and the optional smoked brown sugar syrup for a slow-building
+                                    sweetness.</li>
+                                <li>Top with ginger beer, giving it a bold kick.</li>
+                                <li>Stir gently — let the smoke, lime, and fire come together.</li>
+                                <li>Garnish with a mint sprig, lime wheel, and a thin slice of ginger for aroma.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-3 text-end d-flex flex-column align-items-lg-end">
+                    <div class="cocktail-image-wrapper mb-4">
+                        <img src="{{ asset('assets/frontend/images/coctail-1.jpg') }}" alt="Cocktail Pouring" class="img-fluid">
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center w-100">
+                        <a href="{{ url('cocktail-creation') }}" class="custom-btn">
+                            Submit Your Cocktail
                         </a>
-                        <div class="product-details">
-                            <h2 class="product-title">Devil’s Juice Vodka</h2>
-                            <p class="product-desc">Smooth as sin, born of fire, made to tempt.</p>
-                            <div class="product-actions">
-                                <div class="quantity-selector">
-                                    <button class="qty-btn" id="decrement">-</button>
-                                    <span class="qty" id="qty-value">1</span>
-                                    <button class="qty-btn" id="increment">+</button>
-                                </div>
-
-                                <button class="add-cart-btn">Add to cart</button>
-                            </div>
-                        </div>
                     </div>
-
                 </div>
-                <div class="col-md-4">
-                    <div class="product-card">
-                        <a href="{{ url('our-vodka/devil-juice') }}">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/creation2.png') }}" alt="Devil's Juice Vodka">
-                        </div>
-                        </a>
-                        <div class="product-details">
-                            <h2 class="product-title">Devil’s Juice Vodka</h2>
-                            <p class="product-desc">Smooth as sin, born of fire, made to tempt.</p>
-                            <div class="product-actions">
-                                <div class="quantity-selector">
-                                    <button class="qty-btn" id="decrement">-</button>
-                                    <span class="qty" id="qty-value">1</span>
-                                    <button class="qty-btn" id="increment">+</button>
-                                </div>
 
-                                <button class="add-cart-btn">Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/creation1.png') }}" alt="Devil's Juice Vodka">
-                        </div>
-                        <div class="product-details">
-                            <h2 class="product-title">Devil’s Juice Vodka</h2>
-                            <p class="product-desc">Smooth as sin, born of fire, made to tempt.</p>
-                            <div class="product-actions">
-                                <div class="quantity-selector">
-                                    <button class="qty-btn" id="decrement">-</button>
-                                    <span class="qty" id="qty-value">1</span>
-                                    <button class="qty-btn" id="increment">+</button>
-                                </div>
-
-                                <button class="add-cart-btn">Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
     </section>
 
-    <section class="panel-space devils-hour bg-black">
-        <h2 class="h2-heading text-center mb-4 weight-600">The Devil’s Hour</h2>
-        <p class="w-50 text-center mx-auto mb-5 pb-lg-5 px-3">Where the night slows, and the fire rises. A moment to unwind,
-            indulge, and taste the luxury of rebellion — one pour at a time.</p>
 
+    <section class="panel-space pt-0">
         <div class="container-fluid">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="devils-hour-profile">
-                        <img src="{{ asset('assets/frontend/images/devil1.jpg') }}" alt="devil1" class="w-100">
+
+             <h2 class="text-36 weight-600 mb-5">Similar Cocktails</h2>
+            <div class="similar-cocktails-slider">
+
+                <div class="item">
+                    <div class="product-card mt-0">
+                        <a href="#" class="text-white">
+
+                            <div class="product-image">
+                                <img src="{{ asset('assets/frontend/images/coctail-1.jpg') }}" alt="Devil's Juice Vodka">
+                            </div>
+                            <div class="product-details">
+                                <h2 class="product-title">Devil’s Mule</h2>
+                                <p class="product-desc mb-0">A dark twist on the classic Moscow Mule.</p>
+                            </div>
+                        </a>
                     </div>
-                    <small>Ammy, @ammy_23 </small>
+
                 </div>
-                <div class="col-md-4">
-                    <div class="devils-hour-profile">
-                        <img src="{{ asset('assets/frontend/images/devil2.jpg') }}" alt="devil1" class="w-100">
+
+                <div class="item">
+                    <div class="product-card mt-0">
+                        <a href="#" class="text-white">
+
+                            <div class="product-image">
+                                <img src="{{ asset('assets/frontend/images/coctail-2.jpg') }}" alt="Devil's Juice Vodka">
+                            </div>
+                            <div class="product-details">
+                                <h2 class="product-title">Midnight Flame</h2>
+                                <p class="product-desc mb-0">For those who love their nights like their drinks — smooth
+                                    and burning.</p>
+
+                            </div>
+                        </a>
                     </div>
-                    <small>Ammy, @ammy_23 </small>
+
                 </div>
-                <div class="col-md-4">
-                    <div class="devils-hour-profile">
-                        <img src="{{ asset('assets/frontend/images/devil3.jpg') }}" alt="devil1" class="w-100">
+
+                <div class="item">
+                    <div class="product-card mt-0">
+                        <a href="#" class="text-white">
+
+                            <div class="product-image">
+                                <img src="{{ asset('assets/frontend/images/coctail-3.jpg') }}" alt="Devil's Juice Vodka">
+                            </div>
+                            <div class="product-details">
+                                <h2 class="product-title">Inferno Martini</h2>
+                                <p class="product-desc mb-0">The ultimate power move in a glass.</p>
+                            </div>
+                        </a>
                     </div>
-                    <small>Ammy, @ammy_23 </small>
+
                 </div>
+
             </div>
         </div>
     </section>
+
+
 
 
 
@@ -259,14 +290,12 @@
 
         $(document).ready(function () {
 
-
-
-            $('.coctel-slider').owlCarousel({
+            $('.similar-cocktails-slider').owlCarousel({
                 loop: true,
-                margin: 0,
+                margin: 20,
                 nav: true,
                 dots: false,
-                // autoplay: true,
+                autoplay: true,
                 autoplayTimeout: 3000,
                 autoplayHoverPause: true,
                 center: true,
@@ -275,54 +304,13 @@
                         items: 1
                     },
                     600: {
-                        items: 1
-                    },
-                    1000: {
-                        items: 1
-                    }
-                }
-            });
-            $('.collection-slider').owlCarousel({
-                loop: true,
-                margin: 20,
-                nav: true,
-                dots: false,
-                // autoplay: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 2
+                        items: 3
                     },
                     1000: {
                         items: 3
                     }
                 }
             });
-            $('.testimonial-slider').owlCarousel({
-                loop: true,
-                margin: 20,
-                nav: true,
-                dots: false,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 1
-                    },
-                    1000: {
-                        items: 1
-                    }
-                }
-            });
-
 
         });
 
@@ -333,6 +321,6 @@
 
 </body>
 
-</html> */ ?>
+</html>*/ ?>
 
 @endsection

@@ -14,13 +14,13 @@
             </ul>
             <div class="footer-nav">
                 <ul class="d-lg-flex align-items-center justify-content-center gap-5">
-                    <li><a href="#" class="text-white">Contact</a></li>
-                    <li><a href="#" class="text-white">Terms & Conditions</a></li>
-                    <li><a href="#" class="text-white">Privacy Policy</a></li>
-                    <li><a href="#" class="text-white">All Vodkas</a></li>
-                    <li><a href="#" class="text-white">Our Story</a></li>
-                    <li><a href="#" class="text-white">Our Cocktails</a></li>
-                    <li><a href="#" class="text-white">Cocktail Club</a></li>
+                    <li><a href="{{ url('contact') }}" class="text-white">Contact</a></li>
+                    <li><a href="{{ url('terms-condition') }}" class="text-white">Terms & Conditions</a></li>
+                    <li><a href="{{ url('privacy-policy') }}" class="text-white">Privacy Policy</a></li>
+                    <li><a href="{{ url('/our-vodka') }}" class="text-white">All Vodkas</a></li>
+                    <li><a href="{{ url('/story') }}" class="text-white">Our Story</a></li>
+                    <li><a href="{{ url('/cocktails') }}" class="text-white">Our Cocktails</a></li>
+                    <li><a href="{{ url('/cocktails-club') }}" class="text-white">Cocktail Club</a></li>
                 </ul>
             </div>
             <p>© 2025 Devil’s Juics. All rights reserved. Crafted with fire. Served with temptation. <br> Please enjoy

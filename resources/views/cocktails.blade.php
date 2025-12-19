@@ -96,7 +96,7 @@
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="product-card mt-0">
-                        <a href="#" class="text-white">
+                        <a href="{{ url('cocktails/devil-mule') }}" class="text-white">
 
                             <div class="product-image">
                                 <img src="{{ asset('assets/frontend/images/coctail-1.jpg') }}" alt="Devil's Juice Vodka">

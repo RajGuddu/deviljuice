@@ -43,6 +43,20 @@ class Home extends Controller
         $data['banner'] = $this->commonmodel->getOneRecord('tbl_banner',['status'=>1,'page'=>5]);
         return view('our-vodka', $data);
     }
+    public function product_details(Request $request, $url){ // vodka details
+        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
+        // $product = $this->commonmodel->get_min_value_products('','',$url);
+        
+        // if(empty($product)){
+        //     return redirect()->to('/404');
+        // }
+        // $data['product'] = $product;
+        // get all attributes excepts current attributes
+        // $data['attributes'] = $this->commonmodel->crudOperation('RA','tbl_product_attributes','',[['attrId','!=',$product->attrId],['pro_id','=',$product->pro_id],['status','=',1]]);
+        // $data['simiProduct'] = $this->commonmodel->get_min_value_similar_products($url,$product->cat_id);
+        // echo '<pre>'; print_r($data['simiProduct']); exit;
+        return view('product_detail', $data);
+    }
     public function story(Request $request){
         $data = [];
         // $service = ServiceModel::where('serv_url', $url)->first();
@@ -61,15 +75,7 @@ class Home extends Controller
         $data['proCategory'] = $this->commonmodel->crudOperation('RA','tbl_product_category','',['status'=>1]);
         return view('cocktails', $data);
     }
-    public function cocktails_club(){
-        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
-        $data['products'] = $this->commonmodel->get_min_value_products();
-        $data['proCategory'] = $this->commonmodel->crudOperation('RA','tbl_product_category','',['status'=>1]);
-        return view('cocktails-club', $data);
-    }
-    
-    /************************END OF DEVIL***************** */
-    public function product_details(Request $request){
+    public function cocktails_details(Request $request, $url){ // vodka details
         $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
         // $product = $this->commonmodel->get_min_value_products('','',$url);
         
@@ -81,20 +87,26 @@ class Home extends Controller
         // $data['attributes'] = $this->commonmodel->crudOperation('RA','tbl_product_attributes','',[['attrId','!=',$product->attrId],['pro_id','=',$product->pro_id],['status','=',1]]);
         // $data['simiProduct'] = $this->commonmodel->get_min_value_similar_products($url,$product->cat_id);
         // echo '<pre>'; print_r($data['simiProduct']); exit;
-        return view('product_detail', $data);
+        return view('cocktails_detail', $data);
     }
+    public function cocktail_creation(){
+        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
+        $data['products'] = $this->commonmodel->get_min_value_products();
+        $data['proCategory'] = $this->commonmodel->crudOperation('RA','tbl_product_category','',['status'=>1]);
+        return view('cocktail-creation', $data);
+    }
+    public function cocktails_club(){
+        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
+        $data['products'] = $this->commonmodel->get_min_value_products();
+        $data['proCategory'] = $this->commonmodel->crudOperation('RA','tbl_product_category','',['status'=>1]);
+        return view('cocktails-club', $data);
+    }
+    
     public function contact(){
         
         $data['countries'] = $this->commonmodel->crudOperation('RA','tbl_countries','',['status'=>1],['countries_iso_code','ASC']);
         $data['content'] = $this->commonmodel->getOneRecord('tbl_home_content',['id'=>1]);
         return view('contact_us', $data);
-    }
-    public function about_us(){
-        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
-        // $data['testimonials'] = $this->commonmodel->crudOperation('RA','tbl_testimonial','',['status'=>1],['id','DESC']);
-        $data['banner'] = $this->commonmodel->getOneRecord('tbl_banner',['status'=>1,'page'=>4]);
-        $data['content'] = $this->commonmodel->getOneRecord('tbl_about_content',['id'=>1]);
-        return view('about_us', $data);
     }
     public function cms(Request $request){
         $segment1 = $request->segment(1);
@@ -107,6 +119,15 @@ class Home extends Controller
            return redirect()->to('/404');
         }
     }
+    /************************END OF DEVIL***************** */
+    public function about_us(){
+        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
+        // $data['testimonials'] = $this->commonmodel->crudOperation('RA','tbl_testimonial','',['status'=>1],['id','DESC']);
+        $data['banner'] = $this->commonmodel->getOneRecord('tbl_banner',['status'=>1,'page'=>4]);
+        $data['content'] = $this->commonmodel->getOneRecord('tbl_about_content',['id'=>1]);
+        return view('about_us', $data);
+    }
+    
     
     
     public function book_variant($vid){

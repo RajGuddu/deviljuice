@@ -21,12 +21,19 @@
 </head>
 
 <body>
-
+    @php
+        $segment1 = Request::segment(1);
+        $segment2 = Request::segment(2);
+    @endphp
+    @if($segment1 != 'member-login' && $segment1 != 'member-register')
     @include('_layouts.header')
+    @endif
 
     @yield('content')
 
+    @if($segment1 != 'member-login' && $segment1 != 'member-register')
     @include('_layouts.footer')
+    @endif
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"

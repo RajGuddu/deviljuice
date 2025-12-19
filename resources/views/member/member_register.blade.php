@@ -1,72 +1,126 @@
 @extends('_layouts.master')
 @section('content')
-<div class="container py-5">
-  <div class="row align-items-center">
-    <!-- Left side image -->
-    <div class="col-md-6 mb-4 mb-md-0 text-center">
-      <img src="{{ url('assets/frontend/images/our-vision.jpg') }}" 
-           alt="Product Image" 
-           class="img-fluid rounded shadow">
-    </div>
+<?php /* <!DOCTYPE html>
+<html>
 
-    <!-- Right side login form -->
-    <div class="col-md-6">
-      <div class="card shadow border-0">
-        <div class="card-body p-4">
-          <h3 class="text-center mb-4" style="color: #B4903A;">Sign up</h3>
-            <?php if(Session::has('err')){ 
-                echo alertBS(session('err'), 'danger');
-            } ?>
-          <form action="{{ url()->current() }}" method="POST">
-            @csrf
-            <div class="mb-3">
-              <label for="name" class="form-label">Full Name </label>
-              <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
-              @error('name') <span class="text-danger"> {{ $message }} </span> @enderror
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
-              @error('email') <span class="text-danger"> {{ $message }} </span> @enderror
-            </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title> Devil’s | Juice </title>
 
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}">
-              @error('password') <span class="text-danger"> {{ $message }} </span> @enderror
 
-            </div>
-            <div class="mb-3">
-              <label for="cpassword" class="form-label">Confirm Password</label>
-              <input type="password" class="form-control" id="cpassword" name="cpassword" value="{{ old('cpassword') }}">
-              @error('cpassword') <span class="text-danger"> {{ $message }} </span> @enderror
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media-query.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Head ke andar ye line add karo -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+</head>
+
+<body>*/ ?>
+
+
+    <div class="age-verification sign-up-panel py-5" style="background-image: url({{ asset('assets/frontend/images/footer-bg.gif') }});">
+        <div class="container-fluid">
+            <div class="sign-up-logo">
+                <a href="{{ url('/') }}"><img src="{{ asset('assets/frontend/images/devel-log.png') }}" alt=""></a>
             </div>
 
-            <?php /* <div class="d-flex justify-content-between align-items-center mb-3">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="remember" name="remember">
-                <label class="form-check-label" for="remember">
-                  Remember me
-                </label>
-              </div>
-              <a href="{{ url('forgot-password') }}" class="text-decoration-none" style="color: #B4903A;">Forgot Password?</a>
-            </div> */ ?>
 
-            <div class="d-grid">
-              <button type="submit" class="btn" style="background-color: #B4903A; color: white;">
-                Sign up
-              </button>
+            <div class="sign-up-box  mx-auto">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold mb-2">Create account</h2>
+                    <p class="small text-white mb-md-5 mb-4">Become part of the inner circle. It only takes a moment.</p>
+                </div>
+
+                <form>
+                    <div class="mb-4">
+                        <label class="form-label">Full name</label>
+                        <input type="text" class="form-control custom-input" placeholder="Enter your full name">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Mobile number</label>
+                        <input type="tel" class="form-control custom-input" placeholder="000 000">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">E-mail</label>
+                        <input type="email" class="form-control custom-input" placeholder="Enter your e-mail">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Create Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-control custom-input" placeholder="Enter your password">
+                            <i class="fa-solid fa-eye-slash toggle-password" style="cursor: pointer;"></i>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Confirm Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" class="form-control custom-input" placeholder="Enter your password">
+                            <i class="fa-solid fa-eye-slash toggle-password" style="cursor: pointer;"></i>
+                        </div>
+                    </div>
+
+                    <button type="button" class="custom-btn w-100">Create Account</button>
+
+                    <div class="divider">
+                        <span class="text-white">Already have an account?</span>
+                    </div>
+
+                    <button type="button" class="view-all w-100 mt-0" onclick="window.location.href='{{ url('member-login') }}'">Log In</button>
+
+                </form>
             </div>
 
-            <p class="text-center mt-3 mb-0">
-              Already have an account? 
-              <a href="{{ url('member-login') }}" class="text-decoration-none" style="color: #B4903A;">Login</a>
-            </p>
-          </form>
         </div>
-      </div>
     </div>
-  </div>
-</div>
+
+
+
+    <?php /* <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/owl.carousel.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+
+
+    <script>
+        const toggleIcons = document.querySelectorAll('.toggle-password');
+
+        toggleIcons.forEach(icon => {
+            icon.addEventListener('click', function () {
+                const input = this.previousElementSibling;
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                this.classList.toggle('fa-eye-slash');
+                this.classList.toggle('fa-eye');
+            });
+        });
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>*/ ?>
+
 @endsection
