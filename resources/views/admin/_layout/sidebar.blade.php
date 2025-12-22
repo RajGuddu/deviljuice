@@ -12,8 +12,8 @@ $allOrdersCount = $commonmodel->get_all_new_product_order()->count();
         <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
         <div class="app-branding">
             <a class="app-logo" href="{{ url('admin/dashboard') }}"><img class="logo-icon me-2"
-                    src="{{ url('assets/frontend/images/skin-canberra.svg') }}" alt="logo"><span
-                    class="logo-text">Skin Canberra</span></a>
+                    src="{{ asset('assets/frontend/images/logo.png') }}" alt="logo"><span
+                    class="logo-text">Devil’s | Juice</span></a>
         </div><!--//app-branding-->
         <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
             <ul class="app-menu list-unstyled accordion" id="menu-accordion">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"> 
 <head>
-    <title>Skin Canberra</title>
+    <title>Devil’s | Juice </title>
     
     <!-- Meta -->
     <meta charset="utf-8">
@@ -10,7 +10,7 @@
     
     <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
-    <link rel="shortcut icon" href="{{ url('assets/frontend/images/skin-canberra.svg') }}"> 
+    <link rel="shortcut icon" href="{{ asset('assets/frontend/images/logo.png') }}"> 
     
     <!-- FontAwesome JS-->
     <script defer src="{{ url('assets/admin/plugins/fontawesome/js/all.min.js') }}"></script>
@@ -25,7 +25,7 @@
 	    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
 		    <div class="d-flex flex-column align-content-end">
 			    <div class="app-auth-body mx-auto">	
-				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="{{ url('assets/frontend/images/skin-canberra.svg') }}" alt="logo"></a></div>
+				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="{{ asset('assets/frontend/images/logo.png') }}" alt="logo"></a></div>
 					<h2 class="auth-heading text-center mb-5">Admin Login</h2>
 					@if (Session::has('err') && Session::get('err') != '')
                       <div class="alert alert-danger">

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Skin Canberra</title>
+	<title>Devil’s | Juice </title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
@@ -11,7 +11,7 @@
 
 	<meta name="description" content="Skin Canberra">
 	<meta name="author" content="Xiaoying Riley at 3rd Wave Media">
-	<link rel="shortcut icon" href="{{ url('assets/frontend/images/skin-canberra.svg') }}">
+	<link rel="shortcut icon" href="{{ asset('assets/frontend/images/logo.png') }}">
 
 	<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<!-- Multiselect CSS -->
