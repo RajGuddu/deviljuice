@@ -25,7 +25,7 @@ class Home extends Controller
         $this->commonmodel = new Common_model;
         
     }
-    public function index(Request $request){
+    public function index(Request $request){ //home page
         $data = [];
         $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
         $data['services'] = $this->commonmodel->getAllRecord('tbl_services',['status'=>1,'show_front'=>1],['sv_id','DESC'],4);
