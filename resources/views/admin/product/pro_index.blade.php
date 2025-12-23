@@ -78,6 +78,7 @@
                             <tr>
                                 <th class="cell">#</th>
                                 <th class="cell">Product Name</th>
+                                <th class="cell">Url</th>
                                 <th class="cell">Image</th>
                                 <th class="cell">Status</th>
                                 <th class="cell">Action</th>
@@ -96,6 +97,7 @@
                             <tr>
                                 <td class="cell">{{ $n++ }}</td>
                                 <td class="cell">{{ $list->pro_name }}</td>
+                                <td class="cell"><a href="{{ url('our-vodka/'.$list->pro_url) }}" target="blank">{{ $list->pro_url }}</a></td>
                                 <td class="cell">
 									<img src="{{ url(IMAGE_PATH.$list->image1) }}" alt="banner-image" width="70px" height="60px">
 								</td>

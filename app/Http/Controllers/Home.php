@@ -27,30 +27,33 @@ class Home extends Controller
     }
     public function index(Request $request){ //home page
         $data = [];
-        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
-        $data['services'] = $this->commonmodel->getAllRecord('tbl_services',['status'=>1,'show_front'=>1],['sv_id','DESC'],4);
-        $data['banner'] = $this->commonmodel->getOneRecord('tbl_banner',['status'=>1,'page'=>1]);
-        $data['content'] = $this->commonmodel->getOneRecord('tbl_home_content',['id'=>1]);
+        // $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
+        // $data['services'] = $this->commonmodel->getAllRecord('tbl_services',['status'=>1,'show_front'=>1],['sv_id','DESC'],4);
+        // $data['banner'] = $this->commonmodel->getOneRecord('tbl_banner',['status'=>1,'page'=>1]);
+        // $data['content'] = $this->commonmodel->getOneRecord('tbl_home_content',['id'=>1]);
 
-        $data['products'] = $this->commonmodel->get_min_value_products('', 8);
-        $data['proCategory'] = $this->commonmodel->crudOperation('RA','tbl_product_category','',['status'=>1]);
+        // $data['products'] = $this->commonmodel->get_min_value_products('', 8);
+        $data['products'] = $this->commonmodel->getAllRecord('tbl_product',['status'=>1,'show_front'=>1],['pro_id','DESC']);
+        // $data['proCategory'] = $this->commonmodel->crudOperation('RA','tbl_product_category','',['status'=>1]);
         // echo '<pre>'; print_r($data['proCategory']); exit;
         return view('home', $data);
     }
     public function our_vodka(Request $request){
         $data = [];
-        $data['services'] = ServiceModel::where('status', 1)->orderBy('sv_id','asc')->get();
-        $data['banner'] = $this->commonmodel->getOneRecord('tbl_banner',['status'=>1,'page'=>5]);
+        // $data['services'] = ServiceModel::where('status', 1)->orderBy('sv_id','asc')->get();
+        // $data['banner'] = $this->commonmodel->getOneRecord('tbl_banner',['status'=>1,'page'=>5]);
+        $data['products'] = $this->commonmodel->getAllRecord('tbl_product',['status'=>1,'show_front'=>1],['pro_id','DESC']);
         return view('our-vodka', $data);
     }
     public function product_details(Request $request, $url){ // vodka details
-        $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
+        // $data['testimonials'] = $this->commonmodel->get_custom_testimonials();
         // $product = $this->commonmodel->get_min_value_products('','',$url);
+        $product = $this->commonmodel->getOneRecord('tbl_product',['status'=>1,'pro_url'=>$url]);
         
-        // if(empty($product)){
-        //     return redirect()->to('/404');
-        // }
-        // $data['product'] = $product;
+        if(empty($product)){
+            return redirect()->to('/404');
+        }
+        $data['product'] = $product;
         // get all attributes excepts current attributes
         // $data['attributes'] = $this->commonmodel->crudOperation('RA','tbl_product_attributes','',[['attrId','!=',$product->attrId],['pro_id','=',$product->pro_id],['status','=',1]]);
         // $data['simiProduct'] = $this->commonmodel->get_min_value_similar_products($url,$product->cat_id);

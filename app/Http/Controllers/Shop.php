@@ -22,18 +22,21 @@ class Shop extends Controller
     public function add_to_cart(Request $request){
         if($request->isMethod('POST')){
            $pro_id = $request->input('pro_id') ;
-           $attrid = $request->input('attrid');
+           $qty = $request->input('qty');
 
-           $product =  $this->commonmodel->get_product_for_cart($pro_id, $attrid);
+           $product =  $this->commonmodel->getOneRecord('tbl_product',['status'=>1,'pro_id'=>$pro_id]);
            $insert = 0;
            if($product){
             // $this->cart->clear();
             $insert = $this->cart->add([
-                'id'      => $product->pro_id.'-'.$attrid,
+                'id'      => $product->pro_id,
                 'name'    => $product->pro_name,
-                'quantity'     => 1,
+                'quantity'     => $qty,
                 'price'   => $product->sp,
-                'attributes' => ['pro_id'=>$pro_id,'attrid'=>$attrid,'image' => $product->image1, 'unit' => $product->unit, 'value' => $product->value]
+                'attributes' => ['pro_id'=>$pro_id,
+                                // 'qty'=>$qty,
+                                'image' => $product->image1, 
+                                ]
             ]);
            }
             $cart_count = $this->cart->getTotalQuantity();

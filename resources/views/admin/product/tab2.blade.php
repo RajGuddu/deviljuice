@@ -6,19 +6,19 @@
             <input type="hidden" name="pro_id" value="{{ $record->pro_id ?? '' }}">
             @error('pro_id') <span class="text-danger"> {{ $message }} </span> @enderror
             <div class="mb-3">
+                <label for="details" class="form-label">Details</label>
+                <textarea class="form-control" id="details" name="details" rows="4" cols="30"
+                    style="height: auto;">{{ old('details', $record->details ?? '') }}</textarea>
+            </div>
+            <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="4" cols="30"
                     style="height: auto;">{{ old('description', $record->description ?? '') }}</textarea>
             </div>
             <div class="mb-3">
-                <label for="keyIngred" class="form-label">Key Ingredients</label>
-                <textarea class="form-control" id="keyIngred" name="keyIngred" rows="4" cols="30"
-                    style="height: auto;">{{ old('keyIngred', $record->keyIngred ?? '') }}</textarea>
-            </div>
-            <div class="mb-3">
-                <label for="application" class="form-label">Application</label>
-                <textarea class="form-control" id="application" name="application" rows="4" cols="30"
-                    style="height: auto;">{{ old('application', $record->application ?? '') }}</textarea>
+                <label for="additional_info" class="form-label">Additional Info</label>
+                <textarea class="form-control" id="additional_info" name="additional_info" rows="4" cols="30"
+                    style="height: auto;">{{ old('additional_info', $record->additional_info ?? '') }}</textarea>
             </div>
            
             <button type="submit" class="btn app-btn-primary">Save Changes</button>
@@ -30,7 +30,7 @@
 
 <script>
 	tinymce.init({
-		selector: '#description, #keyIngred, #application',
+		selector: '#details, #description, #additional_info',
 		plugins: 'advlist autolink lists link image charmap preview anchor ' +
                'searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount',
 		toolbar: 'undo redo | formatselect | ' +

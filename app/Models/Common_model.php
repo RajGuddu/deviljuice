@@ -201,7 +201,7 @@ class Common_model extends Model
         $value = $builder->get();
         return $value;
     }
-    public function get_min_value_products($cat_id=null, $limit=null, $pro_url=null)
+    /* public function get_min_value_products($cat_id=null, $limit=null, $pro_url=null)
     {
         // Subquery for min value and its unit
         $sub = DB::table($this->productAttrTbl . ' AS at')
@@ -248,7 +248,7 @@ class Common_model extends Model
         }else{
             return $builder->get();
         }
-    }
+    } */
     public function get_min_value_similar_products($pro_url,$cat_id)
     {
         // Subquery for min value and its unit

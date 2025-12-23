@@ -36,28 +36,36 @@
                 <div class="text-center mb-4">
                     <h2 class="fw-bold mb-2">Log in with e-mail</h2>
                     <p class="small text-white mb-5">Enter your details to access your Devil’s Circle.</p>
+                    <?php if(Session::has('err')){ 
+                        echo alertBS(session('err'), 'danger');
+                    } ?>
+                    <?php if(Session::has('msg')){ 
+                        echo alertBS(session('msg'), 'success');
+                    } ?>
                 </div>
 
-                <form>
-
+                <form action="{{ url()->current() }}" method="POST">
+                    @csrf
                     <div class="mb-4">
                         <label class="form-label">E-mail</label>
-                        <input type="email" class="form-control custom-input" placeholder="Enter your e-mail">
+                        <input type="email" class="form-control custom-input" id="email" name="email" value="{{ old('email') }}" placeholder="Enter your e-mail">
+                        @error('email') <span class="text-danger"> {{ $message }} </span> @enderror
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Create Password</label>
                         <div class="password-wrapper">
-                            <input type="password" class="form-control custom-input" placeholder="Enter your password">
+                            <input type="password" class="form-control custom-input" id="password" name="password" value="{{ old('password') }}" placeholder="Enter your password">
                             <i class="fa-solid fa-eye-slash toggle-password" style="cursor: pointer;"></i>
                         </div>
+                        @error('password') <span class="text-danger"> {{ $message }} </span> @enderror
                         <div class="text-end mt-3 mb-5">
                             <a href="#" class="text-white">Forgot password?</a>
                         </div>
                     </div>
 
 
-                    <button type="button" class="custom-btn w-100">Log in</button>
+                    <button type="submit" class="custom-btn w-100">Log in</button>
 
                     <div class="divider">
                         <span class="text-white">or Sign up</span>

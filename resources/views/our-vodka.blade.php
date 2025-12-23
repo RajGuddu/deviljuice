@@ -89,30 +89,37 @@
             <!-- <h2 class="h2-heading">The Devil’s Finest Creation</h2> -->
 
             <div class="row g-4">
+                @if(isset($products) && $products->isNotEmpty())
+                @foreach($products as $list)
                 <div class="col-md-4">
                     <div class="product-card">
-                        <a href="{{ url('our-vodka/devil-juice') }}">
+                        <a href="{{ url('our-vodka/'.$list->pro_url) }}">
                         <div class="product-image">
-                            <img src="{{ asset('assets/frontend/images/creation1.png') }}" alt="Devil's Juice Vodka">
+                            <img src="{{ url(IMAGE_PATH.$list->image1) }}" alt="{{ $list->alt1 }}">
                         </div>
                         </a>
                         <div class="product-details">
-                            <h2 class="product-title">Devil’s Juice Vodka</h2>
-                            <p class="product-desc">Smooth as sin, born of fire, made to tempt.</p>
+                            <h2 class="product-title">{{ ucwords($list->pro_name) }}</h2>
+                            <p class="product-desc">{{ substr(strip_tags($list->sub_title),0,150) }}</p>
+                            <span class="signle-price"> <strong>${{ $list->sp }}</strong></span>
                             <div class="product-actions">
-                                <div class="quantity-selector">
-                                    <button class="qty-btn" id="decrement">-</button>
-                                    <span class="qty" id="qty-value">1</span>
-                                    <button class="qty-btn" id="increment">+</button>
+                                <div class="quantity-selector qty-wrapper" data-stock="{{ $list->stock }}">
+                                    <button class="qty-btn decrement" >-</button>
+                                    <span class="qty qty-value">1</span>
+                                    <button class="qty-btn increment" >+</button>
                                 </div>
 
-                                <button class="add-cart-btn">Add to cart</button>
+                                <button class="add-cart-btn addToCart" data-pro_id="{{ $list->pro_id }}" data-qty="1">Add to cart</button>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="col-md-4">
+                @endforeach
+                @else
+                    <p class="text-danger">No Product Available.</p>
+                @endif
+                <?php /* <div class="col-md-4">
                     <div class="product-card">
                         <a href="{{ url('our-vodka/devil-juice') }}">
                         <div class="product-image">
@@ -155,7 +162,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div> */ ?>
             </div>
         </div>
     </section>

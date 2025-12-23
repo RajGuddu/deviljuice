@@ -21,7 +21,7 @@
                     value="{{ old('pro_url', $record->pro_url ?? '') }}">
                 @error('pro_url') <span class="text-danger"> {{ $message }} </span> @enderror
             </div>
-            <div class="mb-3">
+            <?php /* <div class="mb-3">
                 <label for="post" class="form-label">Product Category</label>
                 <select name="cat_id" id="cat_id" class="form-control">
                     <option value="">Select One</option>
@@ -36,7 +36,7 @@
                     @endif
                 </select>
                 @error('cat_id') <span class="text-danger"> {{ $message }} </span> @enderror
-            </div>
+            </div> */?>
             <p style="color:blue"><strong>Images (1000 X 1000 px)</strong></p>
             
             <div class="mb-3">
@@ -115,6 +115,27 @@
                     <div class="mb-3">
                         <label for="imgTitle4" class="form-label">Title Text 4 </label>
                         <input type="text" class="form-control" id="imgTitle4" name="imgTitle4" value="{{ old('imgTitle4', $record->imgTitle4 ?? '') }}">
+                    </div>
+                </div>
+            </div>
+            {{-- Image5 --}}
+            <div class="mb-3">
+                <label for="image5" class="form-label">Image 5 </label>
+                <input type="file" class="form-control" id="image5" name="image5">
+                <input type="hidden" class="form-control" id="image5D" name="image5D" value="{{ $record->image5 ?? '' }}">
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="alt5" class="form-label">Alt Text 5 </label>
+                        <input type="text" class="form-control" id="alt5" name="alt5" value="{{ old('alt5', $record->alt5 ?? '') }}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="imgTitle5" class="form-label">Title Text 5 </label>
+                        <input type="text" class="form-control" id="imgTitle5" name="imgTitle5" value="{{ old('imgTitle5', $record->imgTitle5 ?? '') }}">
                     </div>
                 </div>
             </div>

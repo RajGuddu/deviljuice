@@ -256,6 +256,21 @@ a {
     opacity: 1;
 }
 
+.member-sidebar .nav-link {
+    padding-left: 1rem;   
+    padding-right: 1rem;  
+}
+
+.member-sidebar .nav-link.m-active {
+    background-color: #333;
+    color: white !important;
+    border-radius: 4px;
+    font-weight: 700;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;  
+    padding-right: 1rem; 
+}
 
 .user-panel {
     display: flex;

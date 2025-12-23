@@ -187,8 +187,8 @@ $allOrdersCount = $commonmodel->get_all_new_product_order()->count();
                     </a><!--//nav-link-->
                     <div id="submenu-1" class="collapse submenu submenu-1 {{ ($segment2 == 'product_category' || $segment2 == 'products' || $segment2 == 'add_edit_product')?'show':'' }}" data-bs-parent="#menu-accordion">
                         <ul class="submenu-list list-unstyled">
-                            <li class="submenu-item"><a class="submenu-link {{ ($segment2 == 'product_category')?'active':'' }}" href="{{ url('admin/product_category') }}">Product Category</a>
-                            </li>
+                            <?php /* <li class="submenu-item"><a class="submenu-link {{ ($segment2 == 'product_category')?'active':'' }}" href="{{ url('admin/product_category') }}">Product Category</a>
+                            </li> */ ?>
                             <li class="submenu-item"><a class="submenu-link {{ ($segment2 == 'products' || $segment2 == 'add_edit_product')?'active':'' }}" href="{{ url('admin/products') }}">Products</a>
                             </li>
                             

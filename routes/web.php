@@ -68,13 +68,22 @@ Route::get('payment-cancel', [Home::class,'payment_cancel']);
 Route::get('courses', [CoursesFront::class,'index']);
 Route::get('course-detail', [CoursesFront::class,'course_detail']);
 
-
-//for testing
-Route::get('/viewmail', [Home::class,'viewmail']);
-Route::get('/testmail', [Home::class,'testmail']);
 Route::match(['get','post'],'add_to_cart', [Shop::class,'add_to_cart']);
 Route::match(['get','post'],'remove-item/{id}', [Shop::class,'remove_item']);
 Route::get('book48', [Test::class,'book48']);
+
+// *************************Testing url********************************
+Route::get('testcart', [Shop::class,'testcart1']);
+Route::get('getcart', [Shop::class,'view_cart']);
+Route::get('/pay', [Shop::class, 'pay']);
+Route::post('/stripe-payment', [Shop::class, 'payment']);
+Route::get('/stripe-success', [Shop::class, '_success']);
+Route::get('/stripe-cancel', [Shop::class, 'cancel']);
+//for testing
+Route::get('/viewmail', [Home::class,'viewmail']);
+Route::get('/testmail', [Home::class,'testmail']);
+
+// *************************End Testing url********************************
 
 Route::middleware(['MemberAuth'])->group(function () {
     Route::match(['get','post'],'checkout', [Shop::class,'checkout']);
@@ -121,16 +130,6 @@ Route::middleware(['AlreadyloggedMember'])->group(function () {
     Route::match(['get','post'],'member-register', [Member::class,'register']);
 });
 
-// *************************Testing url********************************
-Route::get('testcart', [Shop::class,'testcart1']);
-Route::get('getcart', [Shop::class,'view_cart']);
-Route::get('/pay', [Shop::class, 'pay']);
-Route::post('/stripe-payment', [Shop::class, 'payment']);
-Route::get('/stripe-success', [Shop::class, '_success']);
-Route::get('/stripe-cancel', [Shop::class, 'cancel']);
-
-// *************************End Testing url********************************
-
 
 Route::middleware(['Authcheck'])->group(function () {
     Route::get('admin/dashboard', [Dashboard::class,'index']);
@@ -176,15 +175,15 @@ Route::middleware(['Authcheck'])->group(function () {
     /******************************************AboutContent************************************ */
     Route::match(['get','post'], 'admin/aboutContent', [AboutContent::class,'update_content']);
     /******************************************Products************************************ */
-    Route::match(['get','post'], 'admin/product_category', [Products::class,'product_category']);
-    Route::match(['get','post'], 'admin/product_category/{id}', [Products::class,'product_category']);
-    Route::match(['get','post'], 'admin/add_edit_pro_category', [Products::class,'add_edit_pro_category']);
-    Route::match(['get','post'], 'admin/delete_pro_category/{id}', [Products::class,'delete_pro_category']);
+    // Route::match(['get','post'], 'admin/product_category', [Products::class,'product_category']);
+    // Route::match(['get','post'], 'admin/product_category/{id}', [Products::class,'product_category']);
+    // Route::match(['get','post'], 'admin/add_edit_pro_category', [Products::class,'add_edit_pro_category']);
+    // Route::match(['get','post'], 'admin/delete_pro_category/{id}', [Products::class,'delete_pro_category']);
 
     Route::match(['get','post'], 'admin/products', [Products::class,'index']);
     Route::match(['get','post'], 'admin/add_edit_product', [Products::class,'add_edit_product']);
     Route::match(['get','post'], 'admin/add_edit_product/{id}', [Products::class,'add_edit_product']);
-    Route::match(['get','post'], 'admin/add_edit_product/{id}/{id2}', [Products::class,'add_edit_product']);
+    // Route::match(['get','post'], 'admin/add_edit_product/{id}/{id2}', [Products::class,'add_edit_product']);
     Route::match(['get','post'], 'admin/delete_product/{id}', [Products::class,'delete_product']);
     Route::match(['get','post'], 'admin/delete_attr/{id}/{id2}', [Products::class,'delete_attr']);
 

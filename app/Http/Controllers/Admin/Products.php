@@ -39,18 +39,25 @@ class Products extends Controller
         $data['records'] = $this->commonmodel->crudOperation('RA','tbl_product','','',['pro_id','DESC']);
         return view('admin.product.pro_index', $data);
     }
-    public function add_edit_product(Request $request, $id=null, $attrId=null){
+    public function add_edit_product(Request $request, $id=null){
         $data = $post = [];
         $tabname = '';
+        if($id){
+            $product = $this->commonmodel->crudOperation('R1','tbl_product','',['pro_id'=>$id]);
+        }
         
         if($request->isMethod('POST')){
             if($request->input('tab') == 'tab1'){
                 $rules = [
                     'pro_name' => 'required',
                     'pro_url' => 'required',
-                    'cat_id' => 'required',
+                    // 'cat_id' => 'required',
                 ];
-                $errorMessage = ['pro_name.required'=>'Product name is required','cat_id.required'=>'Category is required'];
+                if(isset($product->pro_id) && $product->pro_url == ''){
+                    $rules['pro_url'] = 'required|unique:tbl_product';
+                }
+                $errorMessage = ['pro_name.required'=>'Product name is required',
+                                /*'cat_id.required'=>'Category is required'*/];
                 $validated = $this->validate($request, $rules, $errorMessage);
             
                 if($validated){
@@ -134,11 +141,31 @@ class Products extends Controller
                             }
                         }
                     }
+                    if($request->hasFile('image5')){
+                        if ($request->file('image5')->isValid()) {
+
+                            $file = $request->file('image5');
+                            do {
+                                $webpFilename = 'proimage5-'. Str::random(8) .'.webp';
+                                $exists = $this->commonmodel->isExists('tbl_product',['image5'=>$webpFilename]);
+                            } while ($exists);
+                            $image = Image::make($file)->encode('webp', 80);
+                            $path = Storage::disk('public_root')->put('images/'. $webpFilename, (string) $image);
+                            if($path){
+                                if (isset($_POST['image5D']) && !empty($_POST['image5D'])) {
+                                    Storage::disk('public_root')->delete('images/' . $_POST['image5D']);
+                                }
+                                $post['image5'] = $webpFilename;
+                                $post['alt5'] = $request->input('alt5');
+                                $post['imgTitle5'] = $request->input('imgTitle5');
+                            }
+                        }
+                    }
                     $post['activeTab'] = 1;
                     $post['pro_name'] = $request->input('pro_name');
                     $post['sub_title'] = $request->input('sub_title');
                     $post['pro_url'] = $request->input('pro_url');
-                    $post['cat_id'] = $request->input('cat_id');
+                    // $post['cat_id'] = $request->input('cat_id');
                     $tabname = 'Basic';
                 }
             }
@@ -151,9 +178,9 @@ class Products extends Controller
             
                 if($validated){
                     $post['activeTab'] = 2;
+                    $post['details'] = $request->input('details');
                     $post['description'] = $request->input('description');
-                    $post['keyIngred'] = $request->input('keyIngred');
-                    $post['application'] = $request->input('application');
+                    $post['additional_info'] = $request->input('additional_info');
                     $tabname = 'Description';
 
                 }
@@ -161,29 +188,17 @@ class Products extends Controller
             if($request->input('tab') == 'tab3'){
                 $rules = [
                     'pro_id' => 'required',
-                    'unit' => 'required',
-                    'value' => 'required',
                     'sp' => 'required',
+                    'stock' => 'required',
                 ];
                 $errorMessage = ['pro_id.required'=>'You must complete the basic tab first.'];
                 $validated = $this->validate($request, $rules, $errorMessage);
             
                 if($validated){
                     $post['activeTab'] = 3;
-                    if($id){
-                        $attr['pro_id'] = $request->input('pro_id');
-                        $attr['unit'] = $request->input('unit');
-                        $attr['value'] = $request->input('value');
-                        $attr['sp'] = $request->input('sp');
-                        $attr['status'] = $request->input('status');
-                        if(!$attrId){
-                            $attr['added_at'] = date('Y-m-d H:i:s');
-                            $this->commonmodel->crudOperation('C','tbl_product_attributes',$attr);
-                        }else{
-                            $attr['update_at'] = date('Y-m-d H:i:s');
-                            $this->commonmodel->crudOperation('U','tbl_product_attributes',$attr,['attrId'=>$attrId]);
-                        }
-                    }
+                    $post['sp'] = $request->input('sp');
+                    $post['stock'] = $request->input('stock');
+                    
                     $tabname = 'Attributes';
 
                 }
@@ -224,14 +239,14 @@ class Products extends Controller
 
         }
         if($id){
-            $data['attributes'] = $this->commonmodel->crudOperation('RA','tbl_product_attributes','',[['pro_id','=',$id]]);
-            if($attrId){
+            // $data['attributes'] = $this->commonmodel->crudOperation('RA','tbl_product_attributes','',[['pro_id','=',$id]]);
+            /*if($attrId){
                 $this->commonmodel->crudOperation('U','tbl_product',['activeTab'=>3],['pro_id'=>$id]);
                 $data['attr'] = $this->commonmodel->crudOperation('R1','tbl_product_attributes','',['attrId'=>$attrId]);
-            }
+            }*/
             $data['record'] = $this->commonmodel->crudOperation('R1','tbl_product','',['pro_id'=>$id]);
         }
-        $data['proCategory'] = $this->commonmodel->crudOperation('RA','tbl_product_category','',['status'=>1]);
+        // $data['proCategory'] = $this->commonmodel->crudOperation('RA','tbl_product_category','',['status'=>1]);
         return view('admin.product.add_edit_product', $data);
     }
     public function delete_product(Request $request, $id=null){
@@ -263,7 +278,7 @@ class Products extends Controller
         }
         return redirect()->to('admin/products');
     }
-    public function delete_attr(Request $request, $id=null, $attrId=null){
+    /*public function delete_attr(Request $request, $id=null, $attrId=null){
         if($id && $attrId){
                 
             if($this->commonmodel->crudOperation('D','tbl_product_attributes','',[['pro_id','=',$id],['attrId','=',$attrId]])){
@@ -274,9 +289,9 @@ class Products extends Controller
             return redirect()->to('admin/add_edit_product/'.$id);
         }
         return redirect()->to('admin/products');
-    }
+    }*/
     /*****************************Product Category ************************************************************************ */
-    public function product_category(Request $request, $id=null){
+    /* public function product_category(Request $request, $id=null){
         
         $data['records'] = $this->commonmodel->crudOperation('RA','tbl_product_category','',[['status','!=',2]],['id','DESC']);
         if($id)
@@ -311,7 +326,7 @@ class Products extends Controller
                         }
                     }
                 }*/
-                $post['category_name'] = $request->input('category_name');
+                /*$post['category_name'] = $request->input('category_name');
                 $post['status'] = $request->input('status');
                 if(!$id){
                     $post['added_at'] = date('Y-m-d H:i:s');
@@ -344,5 +359,5 @@ class Products extends Controller
         }
             
         return redirect()->to('admin/product_category');
-    }
+    } */
 }

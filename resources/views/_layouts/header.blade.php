@@ -39,7 +39,20 @@
                 </div>
                 <div class="user-panel">
                     <a href="{{ url('member-login') }}"><img src="{{ asset('assets/frontend/images/user-icon.svg') }}" alt=""></a>
-                    <a href="#"><img src="{{ asset('assets/frontend/images/cart-icon.svg') }}" alt=""></a>
+                    @php 
+                        $cart_count = cart()->getTotalQuantity();
+                        $checkoutUrl = 'javascript:void(0)';
+                        if($cart_count){    
+                            $checkoutUrl = url('checkout');
+                        }
+                    @endphp
+                    <a href="{{ $checkoutUrl }}" id="cart-icon" class="position-relative">
+                        <img src="{{ asset('assets/frontend/images/cart-icon.svg') }}" alt="">
+                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ $cart_count }}
+                            <span class="visually-hidden">items in cart</span>
+                        </span>
+                    </a>
                 </div>
             </div>
         </nav>

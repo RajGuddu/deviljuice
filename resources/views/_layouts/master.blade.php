@@ -13,11 +13,14 @@
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/frontend/css/media-query.css') }}">
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/aos.css') }}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="{{ asset('assets/frontend/css/all.min.css') }}"> -->
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/toastr.min.css') }}" >
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -35,12 +38,20 @@
     @include('_layouts.footer')
     @endif
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    <!-- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> -->
+    <script src="{{ asset('assets/frontend/js/aos.js') }}"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> -->
+    <script src="{{ asset('assets/frontend/js/jquery-3.6.1.min.js') }}"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
+    <script src="{{ asset('assets/frontend/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/frontend/js/toastr.min.js') }}"></script>
+    
+    <script>
+        window.APP_URL = "{{ url('/') }}";
+    </script>
     <script src="{{ asset('assets/frontend/js/custom.js') }}"></script>
     <script src="{{ asset('assets/frontend/js/owl.carousel.js') }}"></script>
 
@@ -49,29 +60,8 @@
     </script>
 
     <script>
-        const decrement = document.getElementById('decrement');
-        const increment = document.getElementById('increment');
-        const qtyValue = document.getElementById('qty-value');
-        let qty = 1;
-
-        decrement.addEventListener('click', function () {
-            if (qty > 1) {
-                qty--;
-                qtyValue.textContent = qty;
-            }
-        });
-
-        increment.addEventListener('click', function () {
-            qty++;
-            qtyValue.textContent = qty;
-        });
-    </script>
-
-    <script>
 
         $(document).ready(function () {
-
-
 
             $('.coctel-slider').owlCarousel({
                 loop: true,

@@ -78,7 +78,7 @@
 					<a class="flex-sm-fill text-sm-center nav-link {{ $active[1] }}" id="orders-paid-tab" data-bs-toggle="tab"
 						href="#orders-paid" role="tab" aria-controls="orders-paid" aria-selected="false">Details</a>
 					<a class="flex-sm-fill text-sm-center nav-link {{ $active[2] }}" id="orders-pending-tab" data-bs-toggle="tab"
-						href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Attributes</a>
+						href="#orders-pending" role="tab" aria-controls="orders-pending" aria-selected="false">Price</a>
 					<a class="flex-sm-fill text-sm-center nav-link {{ $active[3] }}" id="orders-cancelled-tab" data-bs-toggle="tab"
 						href="#orders-cancelled" role="tab" aria-controls="orders-cancelled" aria-selected="false">Status</a>
 				</nav>
@@ -146,6 +146,17 @@
 								</span>
 								<img src="{{ url(IMAGE_PATH.$record->image4) }}" class="" alt="...">
 								<small class="image-title">Image 4</small>
+							</div>
+							@endif
+							@if(isset($record) && $record->image5 != '')
+							@php $isImage = 1; @endphp
+							<div class="img-box">
+								<span class="cancel-icon"
+									onclick="cancel_image_('tbl_product','image5','pro_id', <?=$record->pro_id?>)"><i
+										class="fa-solid fa-xmark" title="Cancel"></i>
+								</span>
+								<img src="{{ url(IMAGE_PATH.$record->image5) }}" class="" alt="...">
+								<small class="image-title">Image 5</small>
 							</div>
 							@endif
 							@if(!$isImage)

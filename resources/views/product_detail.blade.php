@@ -85,37 +85,46 @@
                                     <button class="nav-link active p-0" id="img1-tab" data-bs-toggle="tab"
                                         data-bs-target="#img1-pane" type="button" role="tab" aria-controls="img1-pane"
                                         aria-selected="true">
-                                        <img src="{{ asset('assets/frontend/images/creation1.png') }}" class="img-fluid" alt="">
+                                        <img src="{{ url(IMAGE_PATH.$product->image1) }}" class="img-fluid" alt="{{$product->alt1 ?? ''}}">
                                     </button>
                                 </li>
+                                @if($product->image2 != '')
+                                
                                 <li class="nav-item mb-2" role="presentation">
                                     <button class="nav-link p-0" id="img2-tab" data-bs-toggle="tab"
                                         data-bs-target="#img2-pane" type="button" role="tab" aria-controls="img2-pane"
                                         aria-selected="false">
-                                        <img src="{{ asset('assets/frontend/images/creation2.png') }}" class="img-fluid" alt="">
+                                        <img src="{{ url(IMAGE_PATH.$product->image2) }}" class="img-fluid" alt="{{$product->alt2 ?? ''}}">
                                     </button>
                                 </li>
+                                @endif
+                                @if($product->image3 != '')
                                 <li class="nav-item mb-2" role="presentation">
                                     <button class="nav-link p-0" id="img3-tab" data-bs-toggle="tab"
                                         data-bs-target="#img3-pane" type="button" role="tab" aria-controls="img3-pane"
                                         aria-selected="false">
-                                        <img src="{{ asset('assets/frontend/images/coctel4.jpg') }}" class="img-fluid" alt="">
+                                        <img src="{{ url(IMAGE_PATH.$product->image3) }}" class="img-fluid" alt="{{$product->alt3 ?? ''}}">
                                     </button>
                                 </li>
+                                @endif
+                                @if($product->image4 != '')
                                 <li class="nav-item mb-2" role="presentation">
                                     <button class="nav-link p-0" id="img4-tab" data-bs-toggle="tab"
                                         data-bs-target="#img4-pane" type="button" role="tab" aria-controls="img4-pane"
                                         aria-selected="false">
-                                        <img src="{{ asset('assets/frontend/images/coctel2.jpg') }}" class="img-fluid" alt="">
+                                        <img src="{{ url(IMAGE_PATH.$product->image4) }}" class="img-fluid" alt="{{$product->alt4 ?? ''}}">
                                     </button>
                                 </li>
+                                @endif
+                                @if($product->image5 != '')
                                 <li class="nav-item mb-2" role="presentation">
-                                    <button class="nav-link p-0" id="img4-tab" data-bs-toggle="tab"
-                                        data-bs-target="#img4-pane" type="button" role="tab" aria-controls="img4-pane"
+                                    <button class="nav-link p-0" id="img5-tab" data-bs-toggle="tab"
+                                        data-bs-target="#img5-pane" type="button" role="tab" aria-controls="img5-pane"
                                         aria-selected="false">
-                                        <img src="{{ asset('assets/frontend/images/coctel2.jpg') }}" class="img-fluid" alt="">
+                                        <img src="{{ url(IMAGE_PATH.$product->image5) }}" class="img-fluid" alt="{{$product->alt5 ?? ''}}">
                                     </button>
                                 </li>
+                                @endif
                             </ul>
                         </div>
 
@@ -124,17 +133,28 @@
                             <div class="tab-content" id="productTabContent">
                                 <div class="tab-pane fade show active" id="img1-pane" role="tabpanel"
                                     aria-labelledby="img1-tab">
-                                    <img src="{{ asset('assets/frontend/images/creation1.png') }}" class="img-fluid main-product-img" alt="">
+                                    <img src="{{ url(IMAGE_PATH.$product->image1) }}" class="img-fluid main-product-img" alt="{{$product->alt1 ?? ''}}">
                                 </div>
+                                @if($product->image2 != '')
                                 <div class="tab-pane fade" id="img2-pane" role="tabpanel" aria-labelledby="img2-tab">
-                                    <img src="{{ asset('assets/frontend/images/creation2.png') }}" class="img-fluid main-product-img" alt="">
+                                    <img src="{{ url(IMAGE_PATH.$product->image2) }}" class="img-fluid main-product-img" alt="{{$product->alt2 ?? ''}}">
                                 </div>
+                                @endif
+                                @if($product->image3 != '')
                                 <div class="tab-pane fade" id="img3-pane" role="tabpanel" aria-labelledby="img3-tab">
-                                    <img src="{{ asset('assets/frontend/images/coctel4.jpg') }}" class="img-fluid main-product-img" alt="">
+                                    <img src="{{ url(IMAGE_PATH.$product->image3) }}" class="img-fluid main-product-img" alt="{{$product->alt3 ?? ''}}">
                                 </div>
+                                @endif
+                                @if($product->image4 != '')
                                 <div class="tab-pane fade" id="img4-pane" role="tabpanel" aria-labelledby="img4-tab">
-                                    <img src="{{ asset('assets/frontend/images/coctel2.jpg') }}" class="img-fluid main-product-img" alt="">
+                                    <img src="{{ url(IMAGE_PATH.$product->image4) }}" class="img-fluid main-product-img" alt="{{$product->alt4 ?? ''}}">
                                 </div>
+                                @endif
+                                @if($product->image5 != '')
+                                <div class="tab-pane fade" id="img5-pane" role="tabpanel" aria-labelledby="img5-tab">
+                                    <img src="{{ url(IMAGE_PATH.$product->image5) }}" class="img-fluid main-product-img" alt="{{$product->alt5 ?? ''}}">
+                                </div>
+                                @endif
                             </div>
                         </div>
 
@@ -144,15 +164,15 @@
                 <div class="col-lg-5">
 
                     <div class="product-dtl-cnt">
-                        <h4 class="product-dtl-title">Limited-Edition Devil’s Juice Collector’s Release</h4>
-
+                        <h4 class="product-dtl-title">{{ ucwords($product->pro_name) }}</h4>
 
                         <div class="price-box mb-4">
-                            <span class="current-price">$50.00</span>
+                            <span class="current-price">${{ $product->sp }}</span>
                             <!-- <span class="original-price">$80.65</span> -->
                         </div>
 
-                        <p class="">
+                        {!! $product->details !!}
+                        <?php /* <p class="">
                             This first release of 5,000 bottles marks the beginning of the Devil’s Juice legacy.
                             Each bottle is crafted for collectors and fans who want to own a piece of the brand’s story.
                         </p>
@@ -168,16 +188,16 @@
                             <li>Includes collector’s gift box.</li>
                             <li>$50 each — pre-order special pricing.</li>
                             <li>Ships once the first batch is bottled and approved.</li>
-                        </ul>
+                        </ul> */ ?>
 
                         <div class="product-actions">
-                            <div class="quantity-selector">
-                                <button class="qty-btn" id="decrement">-</button>
-                                <span class="qty" id="qty-value">1</span>
-                                <button class="qty-btn" id="increment">+</button>
+                            <div class="quantity-selector qty-wrapper" data-stock="{{ $product->stock }}">
+                                <button class="qty-btn decrement" >-</button>
+                                <span class="qty qty-value">1</span>
+                                <button class="qty-btn increment" >+</button>
                             </div>
 
-                            <button class="add-cart-btn">Add to cart</button>
+                            <button class="add-cart-btn addToCart" data-pro_id="{{ $product->pro_id }}" data-qty="1">Add to cart</button>
                         </div>
 
                     </div>
@@ -215,7 +235,8 @@
                 <div class="tab-pane fade show active" id="descPaneUnique" role="tabpanel">
                     <div class="tab-inner-text">
 
-                        <h5 class="weight-700 mb-3">Born of fire, crafted in darkness.</h5>
+                        {!! $product->description !!}
+                        <?php /* <h5 class="weight-700 mb-3">Born of fire, crafted in darkness.</h5>
                         <p>
                             Devil’s Juice Vodka is a bold expression of purity and power — distilled to perfection
                             for those who dare to taste
@@ -241,7 +262,7 @@
                         <h6 class="mt-4 weight-700 mb-3">Perfect For:</h6>
                         <p>
                             Neat pours, bold cocktails, or as a centerpiece in any premium spirits collection.
-                        </p>
+                        </p> */ ?>
 
                     </div>
                 </div>
@@ -249,10 +270,11 @@
                 <!-- Additional Info Tab -->
                 <div class="tab-pane fade" id="infoPaneUnique" role="tabpanel">
                     <div class="tab-inner-text">
-                        <p>• Bottle Volume: 750ml</p>
+                        <?php /* <p>• Bottle Volume: 750ml</p>
                         <p>• Alcohol: 40%</p>
                         <p>• Packaging: Premium collector’s gift box</p>
-                        <p>• Edition: Limited to 5,000 units</p>
+                        <p>• Edition: Limited to 5,000 units</p> */ ?>
+                        {!! $product->additional_info !!}
                     </div>
                 </div>
 

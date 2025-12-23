@@ -7,7 +7,7 @@
             @error('pro_id') <span class="text-danger"> {{ $message }} </span> @enderror
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="mb-3">
                         <label for="show_front" class="form-label">Show on front</label>
                         <div class="form-check form-switch mb-3">
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <div class="form-check form-switch mb-3">
