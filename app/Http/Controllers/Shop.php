@@ -34,7 +34,7 @@ class Shop extends Controller
                 'quantity'     => $qty,
                 'price'   => $product->sp,
                 'attributes' => ['pro_id'=>$pro_id,
-                                // 'qty'=>$qty,
+                                'stock'=>$product->stock,
                                 'image' => $product->image1, 
                                 ]
             ]);
@@ -54,6 +54,35 @@ class Shop extends Controller
             echo json_encode($response); exit;
         }
         return redirect()->to('/');
+    }
+    public function updateQty(Request $request) {
+        $response['success'] = false;
+        $item = $this->cart->get($request->item_id);
+
+        if($item) {
+            $newQty = $item['quantity'] + $request->change;
+            if($newQty > 0) {
+                if($newQty <= $item['attributes']['stock']){
+                    if($this->cart->update($request->item_id, $request->change)){
+                        $updatedItem = $this->cart->get($request->item_id);
+                        $response = [
+                            'success' => true,
+                            'cart_count' => $this->cart->getTotalQuantity(),
+                            'newQty' => $updatedItem['quantity'],
+                            'newSubtotal' => number_format($updatedItem->getPriceSum(),2),
+                            'newTotal' => number_format($this->cart->getTotal(),2)
+                        ];
+                    }
+                }else{
+                    $response = [
+                        'success' => false,
+                        'nostock' => true,
+                    ];
+                }
+            }
+        }
+
+        echo json_encode($response); exit;
     }
     public function checkout(Request $request){
         

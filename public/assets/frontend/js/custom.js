@@ -1,3 +1,34 @@
+    function updateQty(itemId, change) {
+        // alert(itemId); return false;
+        $.ajax({
+            url: window.APP_URL + "/update-cart-qty",
+            type: "POST",
+            dataType: "json",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                item_id: itemId,
+                change: change
+            },
+            success: function(res) {
+                if(res.success) {
+                    // location.reload();
+                    $('#cart-count').text(res.cart_count);
+                    $('#qty-' + itemId).text(res.newQty);
+                    $('#subtotal-' + itemId).text('$' + res.newSubtotal);
+                    $('#total').text('$' + res.newTotal); 
+                }else if(res.nostock){
+                    alert('Stock limit reached');
+                } else {
+                    alert('Failed to update quantity');
+                }
+            },
+            error: function() {
+                alert('Something went wrong!');
+            }
+        });
+    }
     $(document).on('click', '.toggle-password', function () {
 
         let input = $(this).siblings('input');

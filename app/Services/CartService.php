@@ -23,6 +23,10 @@ class CartService
     {
         return Cart::getContent();
     }
+    public function get($itemId)
+    {
+        return Cart::get($itemId);
+    }
 
     public function getSubTotal()
     {
