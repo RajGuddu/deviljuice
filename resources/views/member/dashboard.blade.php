@@ -10,11 +10,11 @@
         </div>
 
         <!-- Main Content -->
-        <div class="col-12 col-md-9 col-lg-10 bg-light p-4">
+        <div class="col-12 col-md-9 col-lg-10 bg-light p-4 text-dark">
             <div class="p-4">
 
                 <!-- Heading -->
-                <h4 class="fw-semibold mb-4 text-uppercase">
+                <h4 class="fw-bold mb-4 text-uppercase">
                     Dashboard Overview
                 </h4>
 

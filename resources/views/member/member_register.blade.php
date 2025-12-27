@@ -37,40 +37,48 @@
                     <h2 class="fw-bold mb-2">Create account</h2>
                     <p class="small text-white mb-md-5 mb-4">Become part of the inner circle. It only takes a moment.</p>
                 </div>
+                <?php if(Session::has('err')){ 
+                    echo alertBS(session('err'), 'danger');
+                } ?>
 
-                <form>
+                <form action="{{ url()->current() }}" method="POST">
+                    @csrf
                     <div class="mb-4">
                         <label class="form-label">Full name</label>
-                        <input type="text" class="form-control custom-input" placeholder="Enter your full name">
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="form-label">Mobile number</label>
-                        <input type="tel" class="form-control custom-input" placeholder="000 000">
+                        <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control custom-input" placeholder="Enter your full name">
+                        @error('name') <span class="text-danger"> {{ $message }} </span> @enderror
                     </div>
 
                     <div class="mb-4">
                         <label class="form-label">E-mail</label>
-                        <input type="email" class="form-control custom-input" placeholder="Enter your e-mail">
+                        <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control custom-input" placeholder="Enter your e-mail">
+                        @error('email') <span class="text-danger"> {{ $message }} </span> @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Mobile number</label>
+                        <input type="tel" id="phone" name="phone" value="{{ old('phone') }}" class="form-control custom-input" placeholder="Enter your mobile number">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Create Password</label>
                         <div class="password-wrapper">
-                            <input type="password" class="form-control custom-input" placeholder="Enter your password">
+                            <input type="password" id="password" name="password" value="{{ old('password') }}" class="form-control custom-input" placeholder="Enter your password">
                             <i class="fa-solid fa-eye-slash toggle-password" style="cursor: pointer;"></i>
                         </div>
+                        @error('password') <span class="text-danger"> {{ $message }} </span> @enderror
                     </div>
 
                     <div class="mb-4">
                         <label class="form-label">Confirm Password</label>
                         <div class="password-wrapper">
-                            <input type="password" class="form-control custom-input" placeholder="Enter your password">
+                            <input type="password" id="cpassword" name="cpassword" value="{{ old('cpassword') }}" class="form-control custom-input" placeholder="Enter confirm password">
                             <i class="fa-solid fa-eye-slash toggle-password" style="cursor: pointer;"></i>
                         </div>
+                        @error('cpassword') <span class="text-danger"> {{ $message }} </span> @enderror
                     </div>
 
-                    <button type="button" class="custom-btn w-100">Create Account</button>
+                    <button type="submit" class="custom-btn w-100">Create Account</button>
 
                     <div class="divider">
                         <span class="text-white">Already have an account?</span>

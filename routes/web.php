@@ -99,8 +99,8 @@ Route::middleware(['MemberAuth'])->group(function () {
     /******************************************Courses****************************************** */
     Route::get('buy-course/{id}', [CoursesFront::class,'buy_course']);
     Route::get('course-payment-success', [CoursesFront::class,'course_payment_success']); // for data update
-    Route::get('member-courses', [Member::class,'courses']);
-    Route::get('course-video/{id}', [Member::class,'course_video']);
+    // Route::get('member-courses', [Member::class,'courses']);
+    // Route::get('course-video/{id}', [Member::class,'course_video']);
 
     Route::get('member-logout', [Member::class,'logout']);
 

@@ -79,6 +79,7 @@ class Member extends Controller
             if($validation){
                 $post['name'] = $request->input('name');
                 $post['email'] = $request->input('email');
+                $post['phone'] = $request->input('phone');
                 $password = $request->input('cpassword');
                 $post['password'] = Hash::make($password,['rounds'=>12,]);
                 $post['ip_address'] = $request->ip();
@@ -107,11 +108,11 @@ class Member extends Controller
         $data['orders'] = $this->commonmodel->crudOperation('RA','tbl_product_order','',['m_id'=>session('m_id')],['id','DESC']);
         return view('member.orders', $data);
     }
-    public function courses(){
+    // public function courses(){
         
-        $data['courses'] = $this->commonmodel->get_purchased_courses();
-        return view('member.courses', $data);
-    }
+    //     $data['courses'] = $this->commonmodel->get_purchased_courses();
+    //     return view('member.courses', $data);
+    // }
     public function course_video($id){
         
         $data['course'] = $this->commonmodel->get_purchased_courses($id);

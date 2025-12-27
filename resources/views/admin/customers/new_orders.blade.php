@@ -90,7 +90,7 @@
                                                          class="img-fluid rounded" 
                                                          style="width:60px; height:60px;">
                                                 </td>
-                                                <td>{{ $product->name.' '.$product->attributes->value.$product->attributes->unit }}</td>
+                                                <td>{{ $product->name }}</td>
                                                 <td>${{ $product->price }}</td>
                                                 <td>{{ $product->quantity }}</td>
                                                 <td class="fw-bold">${{ $product->subtotal }}</td>

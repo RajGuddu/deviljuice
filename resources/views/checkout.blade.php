@@ -55,8 +55,8 @@
                     </div>
                   </td>
 
-                  <td>{{ number_format($item['price'],2) }}</td>
-                  <td id="subtotal-{{ $item['id'] }}">{{ number_format($item->getPriceSum(),2) }}</td>
+                  <td>${{ number_format($item['price'],2) }}</td>
+                  <td id="subtotal-{{ $item['id'] }}">${{ number_format($item->getPriceSum(),2) }}</td>
                   <td class="text-center">
                     <a href="{{ url('remove-item/'.$item['id']) }}"
                        class="btn btn-sm btn-dark"
@@ -70,7 +70,7 @@
               <tfoot>
                 <tr>
                   <th colspan="4" class="text-end">Total</th>
-                  <th colspan="2" id="total">{{ number_format(cart()->getTotal(),2) }}</th>
+                  <th colspan="2" id="total">${{ number_format(cart()->getTotal(),2) }}</th>
                 </tr>
               </tfoot>
             </table>
@@ -121,21 +121,24 @@
             <div class="mb-3">
               <label class="form-label">Full Name *</label>
               <input type="text" name="name" class="form-control" value="{{ old('name') }}">
+              @error('name') <span class="text-danger"> {{ $message }} </span> @enderror
             </div>
 
             <div class="mb-3">
               <label class="form-label">Phone *</label>
               <input type="text" name="phone" class="form-control" value="{{ old('phone') }}">
+              @error('phone') <span class="text-danger"> {{ $message }} </span> @enderror
             </div>
 
             <div class="mb-3">
               <label class="form-label">Address *</label>
               <textarea name="address" class="form-control" rows="3">{{ old('address') }}</textarea>
+              @error('address') <span class="text-danger"> {{ $message }} </span> @enderror
             </div>
           </div>
 
-          <button class="btn btn-dark w-100">
-            Place Order ({{ number_format(cart()->getTotal(),2) }})
+          <button type="submit" class="btn btn-dark w-100" >
+            Place Order (<span id="ord-btn-txt">${{ number_format(cart()->getTotal(),2) }}</span>)
           </button>
         </form>
       </div>

@@ -17,7 +17,7 @@
                     $('#cart-count').text(res.cart_count);
                     $('#qty-' + itemId).text(res.newQty);
                     $('#subtotal-' + itemId).text('$' + res.newSubtotal);
-                    $('#total').text('$' + res.newTotal); 
+                    $('#total,#ord-btn-txt').text('$' + res.newTotal); 
                 }else if(res.nostock){
                     alert('Stock limit reached');
                 } else {

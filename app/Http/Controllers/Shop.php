@@ -150,6 +150,115 @@ class Shop extends Controller
                     'status' => 1,
                     'orderdate' => date('Y-m-d H:i:s'),
                 );
+                $insertId = $this->commonmodel->crudOperation('C','tbl_product_order',$orderData);
+                if($insertId){
+                    /*$session = $this->createStripeCheckout([
+                        'amount'      => $total * 100, // (in paise)
+                        'name'        => 'Skin Canberra',
+                        'description' => 'Product Payment',
+                        'images'      => [],
+                        'metadata'    => [
+                                            'log_id' => $insertId,
+                                            'txnId'  => 'TXN' . time() . rand(1000, 9999),
+                                        ],
+                        'success_url' => url('product-payment-success') . '?sid={CHECKOUT_SESSION_ID}',
+                        'cancel_url'  => url('payment-cancel'),
+                    ]);
+                    return redirect($session->url);*/
+                    $cart->clear();
+                    /*$member_info = $this->commonmodel->crudOperation('R1','tbl_member','',['m_id'=>$m_id]);
+                    $sessionData = array(
+                        'm_id' => $member_info->m_id,
+                        'name' => $member_info->name,
+                        'email' => $member_info->email,
+                        'phone' => $member_info->phone,
+                        'address' => $member_info->address,
+                        'image' => $member_info->image,
+                        'privilege_id' => $member_info->privilege_id,
+                        'status' => $member_info->status,
+                        'memberLogin' => true,
+                    );
+                    $request->session()->put($sessionData);*/
+                    $request->session()->flash('message',['msg'=> 'Your Items placed successfully','type'=>'success']);
+                    
+                }else{
+                    $request->session()->flash('message',['msg'=> 'Something went wrong. Please Try Again...','type'=>'danger']);
+                }
+                return redirect()->to(url('member-orders'));
+
+            }
+        }
+        if(session()->has('memberLogin')){
+            $data['addresses'] = $this->commonmodel->crudOperation('RA','tbl_member_address','',[['m_id','=',session('m_id')],['status','=',1]]);
+        }
+        return view('checkout',$data);
+    }
+    /*public function checkout(Request $request){
+        
+        $data=[];
+        if($request->isMethod('POST')){
+            $m_id = session('m_id');
+            if($request->input('address_option') == 'new'){
+                $rules = [
+                        'name'=>'required',
+                        'phone'=>'required|numeric',
+                        'address'=>'required',
+                ];
+                $errorMessage = [
+                    'name.required'=>'Your full name is required',
+                    'phone.required'=>'Phone is required',
+                    'phone.numeric'=> 'You must enter numeric value',
+                    'address.required'=>'Address is required'
+                ];
+                    
+                $validation = $this->validate($request, $rules, $errorMessage);
+                if($validation){
+                    $post['m_id'] = $m_id;
+                    $post['name'] = $request->input('name');
+                    $post['phone'] = $request->input('phone');
+                    $post['address'] = $request->input('address');
+                    $post['status'] = 1;
+                    $post['added_at'] = date('Y-m-d H:i:s');
+
+                    $add_id = $this->commonmodel->crudOperation('C','tbl_member_address',$post);
+                    // print_r($_POST); exit;
+                    
+                }
+            }else{
+                $add_id = $request->input('address_option');
+            }
+
+            $orderId = 'OD'.time().mt_rand(1000, 9999);
+            $cart = cart();
+            $totalitems = $cart->getTotalQuantity();
+            $cartdata = $cart->getItems();
+            $total = $cart->getTotal();
+            if($totalitems < 1){
+                $request->session()->flash('message',['msg'=> 'Something went wrong. Please Try Again...','type'=>'danger']);
+                return redirect()->to(url('checkout'));
+            }else{
+                $k = 0;
+                $product_details = array();
+                foreach($cartdata as $data){
+                    $product_details[$k]['id'] = $data['id'];
+                    $product_details[$k]['name'] = $data['name'];
+                    $product_details[$k]['price'] = $data['price'];
+                    $product_details[$k]['quantity'] = $data['quantity'];
+                    $product_details[$k]['subtotal'] = $data->getPriceSum();
+                    $product_details[$k]['attributes'] = $data['attributes'];
+                    $k++;
+                }
+                $orderData = array(
+                    'm_id'=> $m_id,
+                    'order_id' => $orderId,
+                    'add_id' => $add_id,
+                    
+                    'product_details' => json_encode($product_details),
+                    'total_qty' => $totalitems,
+                    'net_total' => $total,
+                    'status' => 1,
+                    'orderdate' => date('Y-m-d H:i:s'),
+                );
                 $insertId = $this->commonmodel->crudOperation('C','tbl_product_order_log',$orderData);
                 if($insertId){
                     $session = $this->createStripeCheckout([
@@ -178,7 +287,7 @@ class Shop extends Controller
                         'status' => $member_info->status,
                         'memberLogin' => true,
                     );
-                    $request->session()->put($sessionData);*/
+                    $request->session()->put($sessionData);*
                     $request->session()->flash('message',['msg'=> 'Your Items placed successfully','type'=>'success']);
                     
                 }else{
@@ -192,7 +301,7 @@ class Shop extends Controller
             $data['addresses'] = $this->commonmodel->crudOperation('RA','tbl_member_address','',[['m_id','=',session('m_id')],['status','=',1]]);
         }
         return view('checkout',$data);
-    }
+    }*/
     public function product_payment_success(Request $request){
         $sessionId = $request->get('sid');
         
